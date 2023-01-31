@@ -50,7 +50,7 @@ from torch.utils.tensorboard import SummaryWriter
 from data.every_dream import EveryDreamBatch
 from utils.convert_diff_to_ckpt import convert as converter
 from utils.gpu import GPU
-
+forstepTime = time.time()
 
 _SIGTERM_EXIT_CODE = 130
 _VERY_LARGE_NUMBER = 1e9
@@ -173,6 +173,7 @@ def append_epoch_log(global_step: int, epoch_pbar, gpu, log_writer, **logs):
 
     if logs is not None:
         epoch_pbar.set_postfix(**logs, vram=f"{epoch_mem_color}{gpu_used_mem}/{gpu_total_mem} MB{Style.RESET_ALL} gs:{global_step}")
+        print(f"{epoch_mem_color}{gpu_used_mem}/{gpu_total_mem} MB{Style.RESET_ALL} gs:{global_step} | Elapsed : {time.time() - forstepTime}s")
 
 
 def set_args_12gb(args):
