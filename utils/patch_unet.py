@@ -32,7 +32,7 @@ def patch_unet(ckpt_path):
     is_sd1attn = unet_cfg["attention_head_dim"] == [8, 8, 8, 8]
     is_sd1attn = unet_cfg["attention_head_dim"] == 8 or is_sd1attn
 
-    prediction_type = scheduler_cfg["prediction_type"]
+    prediction_type = "epsilon"
 
     logging.info(f" unet attention_head_dim: {unet_cfg['attention_head_dim']}")
 
